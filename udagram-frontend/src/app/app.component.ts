@@ -7,15 +7,15 @@ import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
 })
 export class AppComponent {
   public appPages = [
     {
       title: 'Home',
       url: '/home',
-      icon: 'home'
-    }
+      icon: 'home',
+    },
   ];
 
   public appName = environment.appName;
@@ -23,7 +23,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
   ) {
     this.initializeApp();
   }
