@@ -1,0 +1,25 @@
+version: 2.1
+
+# Define the jobs we want to run for this project
+jobs:
+  build:
+    docker:
+      - image: cimg/base:2022.06
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          version: 20.10.14
+
+      - run: docker --version
+      - run: docker build -t udagram-api-feed .
+      - run: docker tag udagram-api-feed xxyyzz87/udagram-api-feed:latest
+      - run: |
+          echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
+          docker push xxyyzz87/udagram-api-feed
+
+# Orchestrate our job run sequence
+workflows:
+  build_docker:
+    jobs:
+      - build
