@@ -41,3 +41,8 @@ venv/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 set_env.sh
+
+# K8s
+deployment/k8s/aws-secret.yaml
+deployment/k8s/env-secret.yaml
+deployment/k8s/env-configmap.yaml
