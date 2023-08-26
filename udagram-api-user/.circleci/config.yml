@@ -13,10 +13,10 @@ jobs:
 
       - run: docker --version
       - run: docker build -t udagram-api-user .
-      - run: docker tag udagram-api-user xxyyzz87/udagram-api-user:latest
+      - run: docker tag udagram-api-user xxyyzz87/udagram-api-user:$(git rev-parse --short HEAD)
       - run: |
           echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-          docker push xxyyzz87/udagram-api-user
+          docker push xxyyzz87/udagram-api-user:$(git rev-parse --short HEAD)
 
 # Orchestrate our job run sequence
 workflows:
